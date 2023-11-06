@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:setup": "ts-node src/db/schema",
-    "db:seed": "ts-node src/db/seed"
+    "db:seed": "ts-node src/db/seed",
+    "dev": "nodemon --watch './**/*.ts' --exec ts-node ./src/index.ts"
   },
   "keywords": [],
   "author": "",

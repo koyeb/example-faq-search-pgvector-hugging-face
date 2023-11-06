@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ PAge</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .search-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      width: 60%;
+      /* Adjust the width as needed */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .results {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .results li {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin: 10px 0;
+      background-color: #fff;
+    }
+
+    .results li:hover {
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+    <div class="search-box">
+      <form action="/search" method="get">
+        <input type="text" id="search-input" placeholder="Search FAQ..." />
+        <button id="search-button" type="submit">Search</button>
+      </form>
+    </div>
+    <ul class="results" id="results-list">
+      <!-- Search results will be displayed here -->
+    </ul>
+  </div>
+</body>
+
+</html>
