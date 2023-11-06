@@ -1,5 +1,6 @@
 import "dotenv/config";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import pgvector from "pgvector/pg";
 import pool from "./db/db";
 
 const modelId: string = "sentence-transformers/all-MiniLM-L6-v2";
@@ -24,7 +25,7 @@ export const saveEmbedding = async (
 
 // // function to find similar embeddings in the database
 export const findSimilarEmbeddings = async (
-  embedding: number[]
+  embedding: string
 ): Promise<any[]> => {
   try {
     // find nearest neighbour by L2 distance
@@ -40,7 +41,7 @@ export const findSimilarEmbeddings = async (
 };
 
 // API request to generate embedding for a text
-export const generateEmbedding = async (text: string): Promise<number[]> => {
+export const generateEmbedding = async (text: string): Promise<string> => {
   try {
     const response = await axios.post(
       API_URL,
@@ -54,8 +55,9 @@ export const generateEmbedding = async (text: string): Promise<number[]> => {
       }
     );
 
-    return response.data;
+    return pgvector.toSql(response.data);
   } catch (error) {
-    throw error;
+    const err = error as AxiosError;
+    throw err.message;
   }
 };

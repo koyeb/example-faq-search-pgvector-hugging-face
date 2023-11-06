@@ -1,4 +1,3 @@
-import pgvector from "pgvector/pg";
 import { generateEmbedding, saveEmbedding } from "../helpers";
 
 const travelFAQ = [
@@ -127,8 +126,7 @@ const travelFAQ = [
 
 travelFAQ.forEach(async (question) => {
   try {
-    const data = await generateEmbedding(question);
-    const embedding = pgvector.toSql(data);
+    const embedding = await generateEmbedding(question);
     saveEmbedding(question, embedding);
   } catch (error) {
     console.error(error);
